@@ -13,7 +13,7 @@ body {
 
 /* HEADER */
 header {
-    background-color: #3483fa;
+    background-color: #65a3ff;
     color: white;
     padding: 15px 30px;
 
@@ -166,13 +166,13 @@ main {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #3483fa;
+    background-color: #65a3ff;
     color: white;
     cursor: pointer;
 }
 
 .product-card button:hover {
-    background-color: #2968c8;
+    background-color:  #65a3ff;
 }
 
 /* CARRITO */
@@ -250,7 +250,7 @@ main {
     border: none;
     border-radius: 5px;
 
-    background-color: #3483fa;
+    background-color: #65a3ff;
     color: white;
     cursor: pointer;
 }
