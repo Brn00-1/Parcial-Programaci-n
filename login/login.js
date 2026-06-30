@@ -1,24 +1,84 @@
-const formulario = document.getElementById("loginForm");
-const mensaje = document.getElementById("mensaje");
+// login.js
 
-formulario.addEventListener("submit", function(event){
+document.addEventListener("DOMContentLoaded", function() {
 
-    event.preventDefault();
+    // ---------- LOGIN ----------
+    const formularioLogin = document.getElementById("loginForm");
+    const mensajeLogin = document.getElementById("mensajeLogin");
 
-    const usuario = document.getElementById("username").value;
-    const contraseña = document.getElementById("password").value;
+    if (formularioLogin) {
+        formularioLogin.addEventListener("submit", async function(event){
+            event.preventDefault();
 
-    if (usuario === "johnd" && contraseña === "m38rmF%bodylt") {
+            const usuario = document.getElementById("loginUsername").value;
+            const contraseña = document.getElementById("loginPassword").value;
 
-        mensaje.textContent = "✅ Inicio de sesión correcto";
+            try {
+                const response = await fetch("https://fakestoreapi.com/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: usuario, password: contraseña })
+                });
 
-        // Ir a la página principal
-        window.location.href = ".../principal/index.html";
+                if (!response.ok) {
+                    mensajeLogin.textContent = "❌ Usuario o contraseña incorrectos";
+                    return;
+                }
 
-    } else {
+                const data = await response.json();
+                console.log("Respuesta login:", data);
 
-        mensaje.textContent = "❌ Usuario o contraseña incorrectos";
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("usuario", usuario);
+                localStorage.setItem("logueado", "true");
 
+                mensajeLogin.textContent = "✅ Inicio de sesión correcto";
+                window.location.href = "../principal/index.html";
+
+            } catch (error) {
+                console.error("Error login:", error);
+                mensajeLogin.textContent = "⚠️ Error de conexión";
+            }
+        });
+    }
+
+    // ---------- REGISTRO ----------
+    const formularioRegistro = document.getElementById("registroForm");
+    const mensajeRegistro = document.getElementById("mensajeRegistro");
+
+    if (formularioRegistro) {
+        formularioRegistro.addEventListener("submit", async function(event){
+            event.preventDefault();
+
+            const usuario = document.getElementById("registroUsername").value;
+            const contraseña = document.getElementById("registroPassword").value;
+
+            try {
+                const response = await fetch("https://fakestoreapi.com/users", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: usuario, password: contraseña })
+                });
+
+                if (!response.ok) {
+                    mensajeRegistro.textContent = "❌ No se pudo crear la cuenta";
+                    return;
+                }
+
+                const data = await response.json();
+                console.log("Respuesta registro:", data);
+
+                localStorage.setItem("usuario", usuario);
+                localStorage.setItem("logueado", "true");
+
+                mensajeRegistro.textContent = "✅ Cuenta creada correctamente";
+                window.location.href = "../principal/index.html";
+
+            } catch (error) {
+                console.error("Error registro:", error);
+                mensajeRegistro.textContent = "⚠️ Error de conexión";
+            }
+        });
     }
 
 });
