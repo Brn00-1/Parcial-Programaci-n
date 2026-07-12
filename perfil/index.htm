@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <div id="contenedorPerfil"></div>
+    <script>
+        const contenedor = document.getElementById("contenedorPerfil");
+        const usuarioActivo = localStorage.getItem("usuarioActivo");
+        const logueado = localStorage.getItem("logueado");
+        const usuarios = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+        const usuario = usuarios.find(function (u) {
+            return u.usuario === usuarioActivo;
+        });
+        if (logueado === "true" && usuarioActivo && usuario) {
+            const titulo = document.createElement("h1");
+            titulo.textContent = "Perfil del Usuario";
+            contenedor.appendChild(titulo);
+            const parrafoNombre = document.createElement("p");
+            parrafoNombre.textContent = "Nombre: " + usuario.nombre;
+            contenedor.appendChild(parrafoNombre);
+            const parrafoApellido = document.createElement("p");
+            parrafoApellido.textContent = "Apellido: " + usuario.apellido;
+            contenedor.appendChild(parrafoApellido);
+            const parrafoUsuario = document.createElement("p");
+            parrafoUsuario.textContent = "Usuario: " + usuario.usuario;
+            contenedor.appendChild(parrafoUsuario);
+            const parrafoEmail = document.createElement("p");
+            parrafoEmail.textContent = "Email: " + usuario.email;
+            contenedor.appendChild(parrafoEmail);
+            const botonCerrarSesion = document.createElement("button");
+            botonCerrarSesion.textContent = "Cerrar sesión";
+
+            botonCerrarSesion.addEventListener("click", function () {
+                localStorage.removeItem("usuarioActivo");
+                localStorage.removeItem("logueado");
+                window.location.href = "index.html";
+            });
+
+            contenedor.appendChild(botonCerrarSesion);
+
+        } else {
+            const mensaje = document.createElement("p");
+            mensaje.textContent = "No hay ningún usuario con sesión iniciada";
+            contenedor.appendChild(mensaje);
+
+            const botonVolver = document.createElement("button");
+            botonVolver.textContent = "Volver al inicio";
+
+            botonVolver.addEventListener("click", function () {
+                window.location.href = "index.html";
+            });
+
+            contenedor.appendChild(botonVolver);
+        }
+    </script>
+
+</body>
+</html>
