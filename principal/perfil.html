@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Fake Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Fake Store</h1>
+        </div>
+    </header>
+
+    <!-- MENÚ -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="perfil.html">Perfil</a></li>
+            <li><a href="#">Carrito</a></li>
+        </ul>
+    </nav>
+
+    <!-- PERFIL -->
+    <main>
+        <section id="profileSection">
+
+            <h2>Perfil de Usuario</h2>
+
+            <!-- Se muestra si HAY usuario logueado -->
+            <article class="profile-card" id="profileCard" style="display:none;">
+                <p><strong>Usuario:</strong> <span id="profileUsername"></span></p>
+
+                <button id="logoutBtn">Cerrar sesión</button>
+            </article>
+
+            <!-- Se muestra si NO hay usuario logueado -->
+            <article class="profile-card" id="noProfileCard" style="display:none;">
+                <p>No hay ningún usuario logueado.</p>
+                <!-- 👉 Ajustá esta ruta según dónde esté login.html respecto a esta carpeta -->
+                <a href="../login/login.html">Iniciar sesión</a>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>
+            © 2026 Fake Store Marketplace
+        </p>
+    </footer>
+
+    <script src="perfil.js"></script>
+
+</body>
+</html>
