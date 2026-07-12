@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
@@ -14,15 +17,14 @@
         </div>
 
         <form class="search-form">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Buscar productos..."
-            >
+            <input type="text" id="searchInput" placeholder="Buscar productos...">
             <button type="submit">Buscar</button>
         </form>
+       <div class="cart-icon" id="cartIcon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cartCount">0</span>
+        </div>
 
-        
     </header>
 
     <!-- MENÚ -->
@@ -83,24 +85,15 @@
         </section>
 
         <!-- CARRITO -->
-        <aside class="cart">
+        <aside class="cart" id="carrito">
 
             <h2>Carrito</h2>
 
-            <div id="cartItems">
-
-                <!-- Productos agregados -->
-                <article class="cart-item">
-                    <h3>Producto</h3>
-                    <p>Cantidad: 1</p>
-                    <p>Subtotal: $99.99</p>
-                </article>
-
-            </div>
+            <div id="cartItems"></div>
 
             <footer class="cart-footer">
-                <h3>Total: $0</h3>
-                <button>Finalizar Compra</button>
+                <h3>Total: $<span id="cartTotal">0</span></h3>
+                <button id="finishPurchase">Finalizar Compra</button>
             </footer>
 
         </aside>
@@ -117,4 +110,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
