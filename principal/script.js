@@ -26,7 +26,7 @@ function mostrarCarrito() {
     <p>Cantidad: ${producto.cantidad}</p>
     <p>Subtotal: $${(producto.price * producto.cantidad).toFixed(2)}</p>
 
-   <button class="eliminar">🗑️ Eliminar</button>
+   <button class="eliminar"> Eliminar</button>
 `;
         const botonEliminar = item.querySelector(".eliminar");
 

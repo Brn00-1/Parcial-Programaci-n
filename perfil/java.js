@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const yaExiste = usuarios.some(u => u.usuario === usuario);
 
             if (yaExiste) {
-                mensajeRegistro.textContent = "❌ Ese usuario ya existe";
+                mensajeRegistro.textContent = " Ese usuario ya existe";
                 return;
             }
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
             localStorage.setItem("usuariosRegistrados", JSON.stringify(usuarios));
 
-            mensajeRegistro.textContent = "✅ Cuenta creada correctamente";
+            mensajeRegistro.textContent = " Cuenta creada correctamente";
 
             setTimeout(() => {
                 window.location.href = "login.html";
@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", function() {
             );
 
             if (!usuarioValido) {
-                mensajeLogin.textContent = "❌ Usuario o contraseña incorrectos";
+                mensajeLogin.textContent = " Usuario o contraseña incorrectos";
                 return;
             }
 
             localStorage.setItem("usuarioActivo", usuario);
             localStorage.setItem("logueado", "true");
 
-            mensajeLogin.textContent = "✅ Inicio de sesión correcto";
+            mensajeLogin.textContent = " Inicio de sesión correcto";
 
             setTimeout(() => {
                 window.location.href = "../principal/index.html";
