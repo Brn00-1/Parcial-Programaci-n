@@ -8,6 +8,7 @@ const cartItems = document.getElementById('cartItems');
 const cartTotal = document.getElementById('cartTotal');
 const finishpurchaseButton = document.getElementById('finishPurchase');
 const productsContainer = document.getElementById("productsContainer");
+
 function mostrarCarrito() {
 
     cartItems.innerHTML = "";
