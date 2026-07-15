@@ -60,7 +60,7 @@ function agregarAlCarrito(producto) {
             cantidad: 1
         });
     }
-
+    guardarCarrito();
     mostrarCarrito();
 }
 async function cargarProductos() {
@@ -157,6 +157,42 @@ cartIcon.addEventListener("click", () => {
 function eliminarProducto(id) {
 
     carrito = carrito.filter(producto => producto.id !== id);
+
+    mostrarCarrito();
+}
+
+function cargarcarito() {
+
+    const carritoGuardado = localStorage.getItem("carrito");    
+
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        mostrarCarrito();
+    }
+
+}
+cargarcarito();
+
+
+function guardarCarrito() {
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+}
+finishpurchaseButton.addEventListener("click", finalizarCompra);
+
+function finalizarCompra() {
+
+    if (carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+
+    alert("¡Compra realizada con éxito!");
+
+    carrito = [];
+
+    localStorage.removeItem("carrito");
 
     mostrarCarrito();
 }
